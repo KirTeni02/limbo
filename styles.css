@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: all 1s ease;
+}
+
+#limbo {
+    position: relative;
+    width: 26em;
+    height: 12em;
+}
+
+#start-button {
+    transition: all 1s ease;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4em;
+    height: 2em;
+    font-size: 1.5em;
+    border: 0.1em solid black;
+    border-radius: 0.5em;
+}
+
+.keys {
+    position: absolute;
+    background-color: rgb(200, 0, 0);
+    width: 5em;
+    height: 5em;
+    border-radius: 100%;
+    transition: all 2s ease;
+    transform: translate(8.75em, -35em);
+    cursor: not-allowed;
+}
+
+#numberSelected {
+    color: antiquewhite;
+    opacity: 0;
+}
+
+#restartgame {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, 500%);
+    width: 8em;
+    height: 2em;
+    font-size: 1.5em;
+    border: 0.1em solid black;
+    border-radius: 0.5em;
+    opacity: 0;
+    transition: all 4s ease;
+}
