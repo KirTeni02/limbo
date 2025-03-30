@@ -125,7 +125,7 @@ function shuffleKeys() {
         }, 10100);
     }, 2900);
 }
-
+/*
 function check(selectedIndex) {
     var winner = document.getElementById("numberSelected").innerText;
     if (selectedIndex.toString() === winner) {
@@ -151,3 +151,4 @@ function loseK(filename, text) {
     element.click();
     document.body.removeChild(element);
 }
+*/
