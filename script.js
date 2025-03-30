@@ -125,6 +125,19 @@ function shuffleKeys() {
         }, 10100);
     }, 2900);
 }
+
+function check(selectedIndex) {
+    var winner = document.getElementById("numberSelected").innerText;
+    if (selectedIndex.toString() === winner) {
+        alert("You win! GG");
+        document.getElementById("restartgame").style.opacity = '1';
+        document.getElementById("restartgame").style.transform = 'translate(-50%, -50%)';
+    } else {
+        alert("You lose! noob");
+        location.reload();
+    }
+}
+
 /*
 function check(selectedIndex) {
     var winner = document.getElementById("numberSelected").innerText;
