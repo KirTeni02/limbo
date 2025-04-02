@@ -15,6 +15,9 @@ function startLimbo() {
     var buttonStart = document.getElementById("start-button");
     buttonStart.style.opacity = '0';
     buttonStart.disabled = true;
+    buttonStart.style.cursor = 'default';
+    difRange.style.opacity = '0';
+    document.getElementById("lab").style.opacity = '0';
 
     const playAudio = document.getElementById("limboaudio");
     playAudio.play();
@@ -32,6 +35,8 @@ function startLimbo() {
         winner.innerText = random1to8 - 1;
         keysL[winner.innerText].style.backgroundColor = 'rgba(50, 255, 50, 0.9)';
         keysL[winner.innerText].style.boxShadow = '0 0 20px 10px rgba(50, 255, 50, 0.9)';
+        buttonStart.style.display = 'none';
+        difRange.style.display = 'none';
 
         document.querySelectorAll(".keys").forEach(key => key.style.transition = 'all 0.75s ease');
         setTimeout(() => {
@@ -41,7 +46,7 @@ function startLimbo() {
     }, 2000);
 
     setTimeout(() => {
-        document.querySelectorAll(".keys").forEach(key => key.style.transition = 'all 0.4s ease');
+        document.querySelectorAll(".keys").forEach(key => key.style.transition = 'all ' + 1.2 / difRange.value + 's ease');
     }, 3500);
 
     setTimeout(() => {
@@ -118,8 +123,8 @@ function shuffleKeys() {
         });
     }
     setTimeout(() => {
-        items.forEach(moves => moves.style.transition = 'all 0.4s ease')
-        var interval = setInterval(swapPositions, 325);
+        items.forEach(moves => moves.style.transition = 'all ' + 1.2 / difRange.value + 's ease')
+        var interval = setInterval(swapPositions, 960 / difRange.value);
         setTimeout(() => {
             clearInterval(interval);
         }, 10100);
@@ -130,6 +135,8 @@ function check(selectedIndex) {
     var winner = document.getElementById("numberSelected").innerText;
     if (selectedIndex.toString() === winner) {
         alert("You win! GG");
+        document.querySelectorAll(".keys").forEach(key => key.style.pointerEvents = 'none');
+        document.querySelectorAll(".keys").forEach(key => key.style.cursor = 'not-allowed');
         document.getElementById("restartgame").style.opacity = '1';
         document.getElementById("restartgame").style.transform = 'translate(-50%, -50%)';
     } else {
@@ -138,30 +145,23 @@ function check(selectedIndex) {
     }
 }
 
-/*
-function check(selectedIndex) {
-    var winner = document.getElementById("numberSelected").innerText;
-    if (selectedIndex.toString() === winner) {
-        alert("You win! i have a question for you...");
-        document.getElementById("restartgame").style.opacity = '1';
-        document.getElementById("restartgame").style.transform = 'translate(-50%, -50%)';
-        loseK("gg.txt", "i wanna crypto, can i use your pc?");
-    } else {
-        alert("You lose! i have something special for you...");
-        loseK("XD.txt", "finally i can mine crypto, bye pc");
-        location.reload();
+const difRange = document.getElementById("bar");
+const difLabel = document.getElementById("dif");
+
+function upDif() {
+    switch (difRange.value) {
+        case "1":
+            difLabel.textContent = "Easy"
+            break;
+        case "2":
+            difLabel.textContent = "Normal"
+            break;
+        case "3":
+            difLabel.textContent = "Hard"
+            break;
     }
 }
 
-function loseK(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+upDif();
 
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-    document.body.removeChild(element);
-}
-*/
+difRange.addEventListener("input", upDif);

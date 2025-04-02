@@ -31,6 +31,11 @@ body {
     border-radius: 0.5em;
 }
 
+#start-button:hover, #restartgame:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
 .keys {
     position: absolute;
     background-color: rgb(200, 0, 0);
@@ -59,4 +64,8 @@ body {
     border-radius: 0.5em;
     opacity: 0;
     transition: all 4s ease;
+}
+
+#bar, #lab {
+    transition: all 1s ease;
 }
